@@ -1,0 +1,159 @@
+:root{
+  --brand:#035f87;        /* Raagsan blue */
+  --orange:#E88311;       /* Raagsan orange */
+  --giz:#c80d0d;          /* GIZ red */
+  --ink:#ffffff;          /* primary text on blue blocks */
+  --muted:#cfe0ea;        /* softer white/blue for small text */
+}
+
+/* Global faint background image always visible */
+.page_bg{
+  position:fixed; inset:0; z-index:-2;
+  background:url("assets/fullbleed_01.png") center/cover no-repeat fixed;
+  opacity:.8; filter:saturate(105%);
+}
+
+:root{
+  --brand:#035f87;      /* Raagsan blue */
+  --orange:#E88311;     /* Raagsan orange */
+  --giz:#c80d0d;        /* GIZ red */
+  --ink:#ffffff;
+  --muted:#cfe0ea;
+}
+
+/* Diagonal brand header: 1/4 orange, 3/4 blue; email on the orange */
+.brand_header{
+  position:relative; z-index:10;
+  background: linear-gradient(105deg, var(--orange) 0 25%, var(--brand) 25% 100%);
+  color:#fff;
+}
+.brand_inner{
+  position:relative;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:10px 20px; min-height:56px;
+}
+.brand_email{
+  color:#fff; text-decoration:none; font-weight:700;
+}
+.brand_email:hover{ text-decoration:underline; }
+.brand_tagline{ opacity:.95; font-weight:600; }
+
+/* Sticky white navigation; smaller font; logo at far left */
+.chapter_nav{
+  position:sticky; top:0; z-index:90;
+  background:#fff; border-bottom:2px solid rgba(0,0,0,.06);
+}
+.nav_inner{
+  display:flex; align-items:center; gap:12px;
+  overflow-x:auto; padding:8px 20px;
+}
+.nav_logo img{
+  height:32px; width:auto; display:block;
+}
+.chapter_nav a{
+  color:#1a1a1a; text-decoration:none; font-weight:700;
+  font-size:.9rem; padding:6px 8px; border-radius:6px; white-space:nowrap;
+}
+.chapter_nav a:hover{ background:rgba(0,0,0,.06); }
+.chapter_nav a.active{
+  color:var(--giz);
+  border-bottom:2px solid var(--giz);
+}
+
+/* Containers and spacing */
+.container{max-width:1120px; margin:0 auto; padding:0 20px}
+.section_pad{padding:72px 0}
+.section_pad.tight{padding:48px 0}
+.section_pad.small{padding:32px 0}
+
+/* Hero */
+.hero{position:relative; min-height:78vh; display:flex; align-items:center; text-align:left; color:#fff}
+.hero_media{position:absolute; inset:0; background:url("assets/hero.png") center/cover no-repeat fixed; z-index:-1}
+.hero_overlay{position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.35)); z-index:-1}
+.hero_inner{position:relative}
+.kicker{letter-spacing:.08em; text-transform:uppercase; opacity:.9}
+.h1{font-size:clamp(32px,5.4vw,54px); line-height:1.1; margin:.35em 0}
+.lead{font-size:clamp(16px,2.3vw,20px); max-width:760px}
+
+.btn{display:inline-block; padding:12px 16px; border-radius:999px; text-decoration:none; font-weight:800}
+.btn_fill{background:var(--giz); color:#fff}
+.btn_ghost{border:1px solid rgba(255,255,255,.4); color:#fff; background:transparent}
+.cta_row{margin-top:18px; display:flex; gap:10px; flex-wrap:wrap}
+
+/* Overlap system (varied layouts per section) */
+.overlap_wrap{position:relative; display:grid; grid-template-columns:1.05fr .95fr; gap:28px}
+.overlap_wrap.left .overlap_img{order:1}
+.overlap_wrap.left .card{order:2}
+.overlap_wrap.right .overlap_img{order:2}
+.overlap_wrap.right .card{order:1}
+.overlap_wrap.split .overlap_img{order:1}
+.overlap_wrap.split .card{order:2}
+
+.media_wrap{position:relative; z-index:0}
+.overlap_img{transform:translateY(-12%)}                  /* general lift */
+.overlap_img.low{transform:translateY(8%)}                /* tucked down */
+.overlap_img.corner{transform:translate(-6%, -10%)}       /* corner peek */
+
+.media{width:100%; height:auto; display:block; border-radius:18px; box-shadow:0 12px 30px rgba(0,0,0,.25)}
+
+/* Story blocks: semi-transparent blue, white text (no white backgrounds anywhere) */
+.card{
+  position:relative; z-index:1;
+  background:rgba(3,95,135,.78); /* semi-transparent Raagsan blue */
+  color:var(--ink);
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:16px;
+  padding:28px;
+  box-shadow:0 10px 24px rgba(3,95,135,.25);
+}
+
+/* Typography */
+.h2{
+  color:var(--giz); /* titles in GIZ red per request */
+  font-size:clamp(26px,3.6vw,36px); margin:0 0 12px; line-height:1.2; font-weight:900;
+}
+.h2_giz{color:var(--giz)}
+.h3{
+  color:#ffffff; font-size:20px; margin:16px 0 6px; font-weight:800;
+}
+p{color:#ffffff}
+.bullets{margin:10px 0 0; padding:0 0 0 20px}
+.bullets li{margin:6px 0; color:#ffffff}
+.bullets.tight li{margin:3px 0}
+.small{font-size:.92rem}
+.muted{color:var(--muted)}
+
+/* Pull quotes */
+.pull{
+  border-left:6px solid #fff; padding-left:14px; margin:16px 0;
+  color:#ffffff; font-weight:800; font-size:clamp(18px,2.8vw,24px);
+}
+
+/* Full-bleed photo inside flow */
+.photo_block{margin:48px 0}
+.photo_block img{width:100vw; max-width:100%; height:auto; display:block; margin-left:calc(50% - 50vw)}
+.photo_block figcaption{color:#eaf6ff; font-size:.9rem; margin:8px 0 0 20px}
+
+/* Logos row in About */
+.logo_bar{display:flex; gap:14px; align-items:center; margin-top:12px}
+.logo_chip{
+  display:inline-flex; align-items:center; justify-content:center;
+  background:rgba(3,95,135,.78); color:#fff;
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:12px; padding:8px 10px
+}
+.logo_chip img{height:28px; width:auto; display:block}
+
+/* Footer (Raagsan blue) */
+.site_footer{background:var(--brand); color:#fff; padding:26px 0; text-align:center}
+.site_footer small{opacity:.95}
+
+/* Reveal on scroll */
+.section_reveal{opacity:0; transform:translateY(24px); transition:opacity .6s ease, transform .6s ease}
+.section_reveal.is_visible{opacity:1; transform:none}
+
+/* Responsive */
+@media (max-width: 980px){
+  .overlap_wrap{grid-template-columns:1fr}
+  .overlap_img,.overlap_img.low,.overlap_img.corner{transform:none; margin-bottom:14px}
+}
