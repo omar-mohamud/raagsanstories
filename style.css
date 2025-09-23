@@ -9,15 +9,10 @@
 /* Global faint background image always visible */
 .page_bg{
   position:fixed; inset:0; z-index:-2;
-  background-image:
-    image-set(url("assets/fullbleed_01.webp") type("image/webp"),
-              url("assets/fullbleed_01.png") type("image/png"));
-  background-position:center;
-  background-size:cover;
-  background-repeat:no-repeat;
-  background-attachment:fixed;
+  background:url("assets/fullbleed_01.png") center/cover no-repeat fixed;
   opacity:.8; filter:saturate(105%);
 }
+
 :root{
   --brand:#035f87;      /* Raagsan blue */
   --orange:#E88311;     /* Raagsan orange */
@@ -72,17 +67,7 @@
 
 /* Hero */
 .hero{position:relative; min-height:78vh; display:flex; align-items:center; text-align:left; color:#fff}
-.hero_media{
-  position:absolute; inset:0;
-  background-image:
-    image-set(url("assets/hero.webp") type("image/webp"),
-              url("assets/hero.png") type("image/png"));
-  background-position:center;
-  background-size:cover;
-  background-repeat:no-repeat;
-  background-attachment:fixed;
-  z-index:-1;
-}
+.hero_media{position:absolute; inset:0; background:url("assets/hero.png") center/cover no-repeat fixed; z-index:-1}
 .hero_overlay{position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.35)); z-index:-1}
 .hero_inner{position:relative}
 .kicker{letter-spacing:.08em; text-transform:uppercase; opacity:.9}
