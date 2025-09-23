@@ -7,16 +7,32 @@
 }
 
 /* Global faint background image always visible */
-.page_bg{
-  position:fixed; inset:0; z-index:-2;
-  background-image:
-    image-set(url("assets/fullbleed_01.webp") type("image/webp"),
-              url("assets/fullbleed_01.png") type("image/png"));
-  background-position:center;
-  background-size:cover;
-  background-repeat:no-repeat;
-  background-attachment:fixed;
-  opacity:.8; filter:saturate(105%);
+.page_bg {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background: url("assets/fullbleed_01.png") center/cover no-repeat fixed;
+  background-image: image-set(
+    url("assets/fullbleed_01.webp") type("image/webp"),
+    url("assets/fullbleed_01.png") type("image/png")
+  );
+  filter: saturate(105%);
+}
+
+/* Dark overlay on top of page background */
+.page_bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.35));
+  pointer-events: none;
+}
+
+/* Mobile fix: disable fixed background so it stays sharp */
+@media (max-width: 768px) {
+  .page_bg {
+    background-attachment: scroll;
+  }
 }
 
 /* Color variables */
@@ -154,9 +170,46 @@ figcaption {
 }
 
 /* Full-bleed photo inside flow */
-.photo_block{margin:48px 0}
-.photo_block img{width:100vw; max-width:100%; height:auto; display:block; margin-left:calc(50% - 50vw)}
-.photo_block figcaption{color:#eaf6ff; font-size:.9rem; margin:8px 0 0 20px}
+.photo_block {
+  margin: 48px 0;
+  position: relative;
+}
+
+.photo_wrap {
+  position: relative;
+}
+
+.photo_block img {
+  width: 100vw;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-left: calc(50% - 50vw);
+}
+
+/* Dark overlay */
+.photo_overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.35));
+  pointer-events: none;
+}
+
+/* Caption */
+.photo_block figcaption {
+  color: #ffffff;
+  font-size: 0.9rem;
+  margin: 8px 0 0 20px;
+  text-align: left;
+  opacity: 0.9;
+}
+
+/* Mobile fix */
+@media (max-width: 768px) {
+  .photo_block img {
+    background-attachment: scroll; /* ensures crisp rendering on mobile */
+  }
+}
 
 /* Logos row in About */
 .logo_bar{display:flex; gap:14px; align-items:center; margin-top:12px}
