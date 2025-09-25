@@ -31,3 +31,17 @@ const spy=new IntersectionObserver(entries=>{
   });
 },{rootMargin:"-45% 0px -50% 0px", threshold:0});
 chapters.forEach(sec=>spy.observe(sec));
+
+// hero background image (webp first, png fallback)
+window.addEventListener("load",()=>{
+  const hero=document.querySelector(".hero_media");
+  if(hero){
+    // Force hero background immediately (webp first, png fallback)
+    hero.style.backgroundImage =
+      `image-set(url("assets/hero.webp") type("image/webp"),
+                 url("assets/hero.png") type("image/png"))`;
+    hero.style.backgroundPosition="center";
+    hero.style.backgroundSize="cover";
+    hero.style.backgroundRepeat="no-repeat";
+  }
+});
